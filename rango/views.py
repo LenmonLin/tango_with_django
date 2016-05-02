@@ -4,5 +4,6 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('hello world')
+    context_dict = {'boldmessage':'i am bold font in the context'}
+    return render(request,'rango/index.html',context_dict)
 

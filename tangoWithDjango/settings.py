@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+TEMPLATE_PATH = os.path.join(BASE_DIR,'templates')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'tangoWithDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
