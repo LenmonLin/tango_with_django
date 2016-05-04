@@ -6,6 +6,6 @@ class PageAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name','views','likes']
-    
+
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Page,PageAdmin)

@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rango</title>
-</head>
-<body>
-        <h1>Rango says...</h1>
-        hello world! <strong>{{ boldmessage }}</strong><br/>
-    <img src="{% static 'rango/rango.jpeg' alt='picture of rango'%}">
-</body>
+<html>
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Rango says...hello world!</h1>
+
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li>{{ category.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+
+
+    </body>
 </html>

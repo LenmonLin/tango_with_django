@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Category
 # Create your views here.
 
 
 def index(request):
-    context_dict = {'boldmessage':'i am bold font in the context'}
+    category_list = Category.objects.order_by('-likes')[:5]
+    context_dict = {'categories':category_list}
     return render(request,'rango/index.html',context_dict)
 
