@@ -18,11 +18,18 @@ from django.conf.urls import url,include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles import views
+from registration.backends.simple.views import RegistrationView
+
+
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self,request, user):
+        return '/rango/'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^rango/',include('rango.urls')),
-
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 ]
 
 if not settings.DEBUG:
