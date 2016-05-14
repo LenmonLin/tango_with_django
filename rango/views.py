@@ -6,6 +6,7 @@ from django.contrib.auth.views import login, logout
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
+from .bing_search import run_query
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from .models import Category
 from .models import Page
@@ -236,3 +237,16 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/rango/')
+
+def search(request):
+
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            # Run our Bing function to get the results list!
+            result_list = run_query(query)
+
+    return render(request, 'rango/search.html', {'result_list': result_list})
